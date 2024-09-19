@@ -1,9 +1,8 @@
 export const API_URL = "https://api.themoviedb.org/3";
 export const IMAGE_URL = "https://image.tmdb.org/t/p";
-
-// Using vidsrc.cc for embedding movies and TV shows
-export const EMBED_URL = "https://vidsrc.cc/v3/embed";  // updated for movies
-export const EMBED_TV_URL = "https://vidsrc.cc/v3/embed";  // updated for TV shows
+export const EMBED_URL = "https://2embed.org/embed";
+export const EMBED_VIDSRC = "https://vidsrc.me/embed";
+export const EMBED_TO = "https://vidsrc.cc/embed";
 
 export const reactionColorForTailwindCSS = {
   haha: "text-yellow-500",
@@ -17,6 +16,12 @@ export const reactionColorForTailwindCSS = {
 export const MAX_RUNTIME = 200;
 export const GAP = 20;
 
+// My purpose is to append search parameter to the url without replace the existing search parameter.
+
+// I have 2 ways of doing that. The first way is not optimal
+
+// this peace of code is of the first way. I could delete it but I'd like to keep it as a reference.
+
 export const SUPPORTED_QUERY = {
   genre: [],
   sort_by: [],
@@ -24,5 +29,4 @@ export const SUPPORTED_QUERY = {
   maxRuntime: [],
   from: [],
   to: [],
-  
 };
