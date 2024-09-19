@@ -1,17 +1,25 @@
-import { EMBED_URL } from "./constants";
+import { EMBED_TO, IMAGE_URL } from "./constants";
 
 export const resizeImage = (
   imageUrl: string,
   width: string = "original"
 ): string => `${IMAGE_URL}/${width}${imageUrl}`;
 
-// Using vidsrc.cc for movie embedding
-export const embedMovie = (id: number): string =>
-  `${EMBED_URL}/movie/${id}`;
+// export const embedMovie = (id: number): string =>
+//   `${EMBED_URL}/movie?tmdb=${id}`;
 
-// Using vidsrc.cc for TV show embedding
-export const embedTV = (id: string, season: number, episode: number): string =>
-  `${EMBED_URL}/tv/${id}/${season}-${episode}`;
+// export const embedMovie = (id: number): string => `${EMBED_VIDSRC}/${id}`;
+
+export const embedMovie = (id: number): string => `${EMBED_TO}/movie?id=${id}`;
+
+// export const embedTV = (id: number, season: number, episode: number): string =>
+//   `${EMBED_URL}/series?tmdb=${id}&sea=${season}&epi=${episode}`;
+
+// export const embedTV = (id: number, season: number, episode: number): string =>
+//   `${EMBED_VIDSRC}/${id}/${season}-${episode}`;
+
+export const embedTV = (id: number, season: number, episode: number): string =>
+  `${EMBED_TO}/tv?id=${id}&s=${season}&e=${episode}`;
 
 export const calculateTimePassed = (time: number): string => {
   const unit = {
@@ -35,20 +43,15 @@ export const calculateTimePassed = (time: number): string => {
 };
 
 export const convertErrorCodeToMessage = (errorCode: string): string => {
-  switch (errorCode) {
-    case "auth/email-already-in-use":
-      return "Your email is already in use.";
-    case "auth/user-not-found":
-      return "Your email may be incorrect.";
-    case "auth/wrong-password":
-      return "Your password is incorrect.";
-    case "auth/invalid-email":
-      return "Your email is invalid.";
-    case "auth/too-many-requests":
-      return "You request too many times!";
-    default:
-      return "Something weird happened.";
-  }
+  if (errorCode === "auth/email-already-in-use")
+    return "Your email is already in use.";
+  if (errorCode === "auth/user-not-found")
+    return "Your email may be incorrect.";
+  if (errorCode === "auth/wrong-password") return "Your password is incorrect.";
+  if (errorCode === "auth/invalid-email") return "Your email is invalid";
+  if (errorCode === "auth/too-many-requests")
+    return "You request too many times!";
+  return "Something weird happened.";
 };
 
 export const getRandomAvatar = (): string => {
@@ -66,4 +69,3 @@ export const getRandomAvatar = (): string => {
   ];
 
   return avatars[Math.floor(Math.random() * avatars.length)];
-};
