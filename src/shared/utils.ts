@@ -19,7 +19,7 @@ export const embedMovie = (id: number): string => `${EMBED_TO}/v3/embed/movie/${
 //   `${EMBED_VIDSRC}/${id}/${season}-${episode}`;
 
 export const embedTV = (id: number, season: number, episode: number): string =>
-  `${EMBED_TO}/v3/embed/tv/id=${id}/${season}/${episode}`;
+  `${EMBED_TO}/v3/embed/tv/${id}/${season}/${episode}`;
 
 export const calculateTimePassed = (time: number): string => {
   const unit = {
